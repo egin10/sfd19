@@ -15,6 +15,8 @@ class Create extends Component {
         let{title, desc} = this.state;
         e.preventDefault();
         console.log(title, desc);
+        alert(`Isi dari Title : ${title} dan Deskripsinya adalah ${desc}`);
+        this.setState({title: "", desc: ""});
     }
 
     render() {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Card from './Card';
 
 class List extends Component {
@@ -7,12 +8,28 @@ class List extends Component {
 
         this.state = {
             books : [
-                {id: 1, title: "Judul 1", desc: "Deskripsi 1"},
-                {id: 2, title: "Judul 2", desc: "Deskripsi 2"},
-                {id: 3, title: "Judul 3", desc: "Deskripsi 3"},
-                {id: 4, title: "Judul 4", desc: "Deskripsi 4"}
+                // {id: 1, title: "Judul 1", desc: "Deskripsi 1"},
+                // {id: 2, title: "Judul 2", desc: "Deskripsi 2"},
+                // {id: 3, title: "Judul 3", desc: "Deskripsi 3"},
+                // {id: 4, title: "Judul 4", desc: "Deskripsi 4"}
             ]
         }
+    }
+
+    componentDidMount(){
+        this.getData();
+    }
+
+    getData = async () => {
+        const todos = await axios.get('https://jsonplaceholder.typicode.com/todos/');
+        let books = this.state.books;
+        console.log(todos.data);
+        todos.data.map(todo => books.push({
+            id: todo.id,
+            title: todo.title,
+            desc: todo.completed.toString()
+        }));
+        this.setState({books});
     }
 
     createBook = () =>{
