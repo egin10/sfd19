@@ -17,6 +17,7 @@ class List extends Component {
     }
 
     componentDidMount(){
+        document.title = "List Books | SFD2019";
         this.getData();
     }
 

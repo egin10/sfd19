@@ -11,6 +11,10 @@ class Create extends Component {
         }
     }
 
+    componentDidMount(){
+        document.title = "Create Book | SFD2019";
+    }
+
     onSubmit = (e) => {
         let{title, desc} = this.state;
         e.preventDefault();

@@ -13,6 +13,7 @@ class Detail extends Component {
     }
 
     componentDidMount(){
+        document.title = "Detail | SFD2019";
         this.getData();
     }
 
